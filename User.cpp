@@ -58,4 +58,15 @@ void User::deposit(double amount)
 void User::withdraw(double amount)
 {
     balance -= amount;
+    this->transactions.push_back(Transaction("Withdraw", amount));
+}
+
+void User::printTransactions() const
+{
+    for (int i = 0; i < transactions.size(); i++)
+    {
+        std::cout << "Transaction type: " << transactions[i].typeofTransaction << std::endl;
+        std::cout << "Amount: " << transactions[i].amount << std::endl;
+        std::cout << "Date: " << transactions[i].date << std::endl;
+    }
 }

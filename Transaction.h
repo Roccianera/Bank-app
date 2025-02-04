@@ -1,5 +1,5 @@
 #include <string>
-#include<iostream>
+#include <iostream>
 #include <chrono>
 #include "Date/Date.h"
 
@@ -9,12 +9,15 @@ struct Transaction
     std::string typeofTransaction;
     double amount;
 
-    Transaction(std::string type, double amount) : typeofTransaction(type), amount(amount) {
+    Transaction(std::string type, double amount) : typeofTransaction(type), amount(amount)
+    {
 
-            
+        auto now = std::chrono::system_clock::now();
 
-            date.setDate();
+        std::time_t now_time_t = std::chrono::system_clock::to_time_t(now);
+        // Converti in una struttura tm (tempo locale)
+        std::tm *localTime = std::localtime(&now_time_t);
 
-
+        date.setDate(localTime->tm_mday, localTime->tm_mon, localTime->tm_year);
     }
 };

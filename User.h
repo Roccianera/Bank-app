@@ -24,6 +24,7 @@ public:
     void setBalance(double);
     void deposit(double);
     void withdraw(double);
+    void printTransactions() const;
     
 
 }
