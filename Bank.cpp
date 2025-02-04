@@ -1,5 +1,10 @@
 #include "Bank.h"
 
+ Bank::Bank()
+{
+    this->users = std::vector<User>();
+}
+
 void Bank::RegisterUser(std::string name, std::string password, double balance)
 {   
     //Account number should depend on Bank 

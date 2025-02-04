@@ -13,12 +13,13 @@ void showMenu(bool isLoggedIn)
     }
     else
     {
-        cout << "3. Withdraw" << endl;
-        cout << "4. Deposit" << endl;
-        cout << "5. Logout" << endl;
-        cout << "6. PrintTransactions" << endl;
+        cout << "3. Check Balance" << endl;
+        cout << "4. Withdraw" << endl;
+        cout << "5. Deposit" << endl;
+        cout << "6. Logout" << endl;
+        cout << "7. PrintTransactions" << endl;
     }
-    cout << "7. Exit" << endl;
+    cout << "8. Exit" << endl;
     cout << "======================" << endl;
 }
 
@@ -77,12 +78,19 @@ int main()
                     cout << e.what() << endl;
                 }
             }
-            else
-            {
-                cout << "Invalid choice. Please try again." << endl;
-            }
             break;
         case 3:
+            if (isLoggedIn)
+            {
+                cout << "Check Balance selected" << endl;
+                cout << "Your current balance is: " << user->getBalance() << endl;
+            }
+            else
+            {
+                cout << "You need to log in first." << endl;
+            }
+            break;
+        case 4:
             if (isLoggedIn)
             {
                 cout << "Withdraw selected" << endl;
@@ -97,7 +105,7 @@ int main()
                 cout << "Invalid choice. Please try again." << endl;
             }
             break;
-        case 4:
+        case 5:
             if (isLoggedIn)
             {
                 cout << "Deposit selected" << endl;
@@ -111,7 +119,7 @@ int main()
                 cout << "Invalid choice. Please try again." << endl;
             }
             break;
-        case 5:
+        case 6:
             if (isLoggedIn)
             {
                 cout << "Logout selected" << endl;
@@ -123,7 +131,7 @@ int main()
                 cout << "Invalid choice. Please try again." << endl;
             }
             break;
-        case 6:
+        case 7:
             if (isLoggedIn)
             {
                 cout << "Print transction selected" << endl;
@@ -134,13 +142,13 @@ int main()
                 cout << "Invalid choice. Please try again." << endl;
             }
             break;
-        case 7:
+        case 8:
             cout << "Exiting..." << endl;
             break;
         default:
             cout << "Invalid choice. Please try again." << endl;
         }
-    } while (choice != 7);
+    } while (choice != 8);
 
     return 0;
 }
